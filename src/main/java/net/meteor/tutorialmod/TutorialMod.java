@@ -1,6 +1,8 @@
-package net.meteor.customod;
+package net.meteor.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.meteor.tutorialmod.block.ModBlocks;
+import net.meteor.tutorialmod.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,14 +13,17 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(CustomMod.MOD_ID)
-public class CustomMod {
+@Mod(TutorialMod.MOD_ID)
+public class TutorialMod {
     // Define mod id in a common place for everything to reference
-    public static final String MOD_ID = "custommod";
+    public static final String MOD_ID = "tutorialmod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public CustomMod() {
+    public TutorialMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
