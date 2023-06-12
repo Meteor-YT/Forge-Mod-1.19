@@ -2,10 +2,20 @@
   "item.tutorialmod.zircon": "Zircon",
   "item.tutorialmod.raw_zircon": "Raw Zircon",
   "item.tutorialmod.eight_ball": "Eight Ball",
+  "item.tutorialmod.blueberry": "Blueberry",
+  "item.tutorialmod.blueberry_seeds": "Blueberry Seeds",
 
   "block.tutorialmod.zircon_block": "Block of Zircon",
   "block.tutorialmod.zircon_ore": "Zircon Ore",
   "block.tutorialmod.deepslate_zircon_ore": "Deepslate Zircon Ore",
+  "block.tutorialmod.jump_boost_block": "Jump Boost Block",
+  "block.tutorialmod.zircon_lamp_block": "Zircon Lamp",
+  "block.tutorialmod.blueberry_seeds": "Blueberry Seeds",
+  "block.tutorialmod.blueberry_crop": "Blueberry Crop",
+  "block.tutorialmod.endstone_zircon_ore": "Endstone Zircon Ore",
+  "block.tutorialmod.netherrack_zircon_ore": "Netherrack Zircon Ore",
 
-  "itemGroup.customtab": "Custom Tab"
+  "itemGroup.customtab": "Custom Tab",
+
+  "entity.minecraft.villager.tutorialmod.jump_master": "Jump Master"
 }

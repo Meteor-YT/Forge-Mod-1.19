@@ -3,7 +3,14 @@ package net.meteor.tutorialmod;
 import com.mojang.logging.LogUtils;
 import net.meteor.tutorialmod.block.ModBlocks;
 import net.meteor.tutorialmod.item.ModItems;
+import net.meteor.tutorialmod.painting.ModPaintings;
+import net.meteor.tutorialmod.villager.ModVillagers;
+import net.meteor.tutorialmod.world.feature.ModConfiguredFeatures;
+import net.meteor.tutorialmod.world.feature.ModPlacedFeature;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,6 +31,10 @@ public class TutorialMod {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModVillagers.register(modEventBus);
+        ModPaintings.register(modEventBus);
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeature.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -31,7 +42,9 @@ public class TutorialMod {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(() -> {
+            ModVillagers.registerPOIs();
+        });
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -40,7 +53,6 @@ public class TutorialMod {
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
         }
     }
 }
