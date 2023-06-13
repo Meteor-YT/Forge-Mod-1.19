@@ -12,8 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class PlayerThirstProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static Capability<PlayerThirst> PLAYER_THIRST = CapabilityManager.get(new CapabilityToken<PlayerThirst>() {
-    });
+    public static Capability<PlayerThirst> PLAYER_THIRST = CapabilityManager.get(new CapabilityToken<PlayerThirst>() {});
 
     private PlayerThirst thirst = null;
     private final LazyOptional<PlayerThirst> optional = LazyOptional.of(this::createPlayerThirst);
@@ -39,11 +38,12 @@ public class PlayerThirstProvider implements ICapabilityProvider, INBTSerializab
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
         createPlayerThirst().saveNBTData(nbt);
+
         return null;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        createPlayerThirst().loadBTData(nbt);
+        createPlayerThirst().loadNBTData(nbt);
     }
 }

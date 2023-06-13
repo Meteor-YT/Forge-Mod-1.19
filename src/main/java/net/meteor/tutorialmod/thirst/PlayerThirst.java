@@ -4,8 +4,8 @@ import net.minecraft.nbt.CompoundTag;
 
 public class PlayerThirst {
     private int thirst;
-    private final int MIN_THIRST = 0;
-    private final int MAX_THIRST = 10;
+    private static int MIN_THIRST = 0;
+    private static int MAX_THIRST = 10;
 
     public int getThirst() {
         return thirst;
@@ -16,7 +16,7 @@ public class PlayerThirst {
     }
 
     public void subThirst(int sub) {
-        this.thirst = Math.min(thirst - sub, MIN_THIRST);
+        this.thirst = Math.max(thirst - sub, MIN_THIRST);
     }
 
     public void copyFrom(PlayerThirst source) {
@@ -27,7 +27,7 @@ public class PlayerThirst {
         nbt.putInt("thirst", thirst);
     }
 
-    public void loadBTData(CompoundTag nbt) {
+    public void loadNBTData(CompoundTag nbt) {
         thirst = nbt.getInt("thirst");
     }
 }

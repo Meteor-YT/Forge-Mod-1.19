@@ -3,7 +3,6 @@ package net.meteor.tutorialmod;
 import com.mojang.logging.LogUtils;
 import net.meteor.tutorialmod.block.ModBlocks;
 import net.meteor.tutorialmod.item.ModItems;
-import net.meteor.tutorialmod.networking.ModMessages;
 import net.meteor.tutorialmod.painting.ModPaintings;
 import net.meteor.tutorialmod.villager.ModVillagers;
 import net.meteor.tutorialmod.world.feature.ModConfiguredFeatures;
@@ -46,8 +45,6 @@ public class TutorialMod {
         event.enqueueWork(() -> {
             ModVillagers.registerPOIs();
         });
-
-        ModMessages.register();
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

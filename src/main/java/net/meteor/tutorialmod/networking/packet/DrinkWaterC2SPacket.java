@@ -1,5 +1,6 @@
 package net.meteor.tutorialmod.networking.packet;
 
+import net.meteor.tutorialmod.networking.ModMessages;
 import net.meteor.tutorialmod.thirst.PlayerThirstProvider;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
@@ -41,14 +42,17 @@ public class DrinkWaterC2SPacket {
 
                 player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
                     thirst.addThirst(1);
-                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst()).withStyle(ChatFormatting.AQUA));
+                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst()).withStyle(ChatFormatting.GREEN));
+                    ModMessages.setToPlayer(new ThirstDataSyncC2SPacket(thirst.getThirst()), player);
+
                 });
             } else {
                 player.sendSystemMessage(Component.translatable(MESSAGE_NO_WATER).withStyle(ChatFormatting.RED));
 
                 player.getCapability(PlayerThirstProvider.PLAYER_THIRST).ifPresent(thirst -> {
-                    thirst.subThirst(1);
-                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst()).withStyle(ChatFormatting.DARK_BLUE));
+                    thirst.addThirst(1);
+                    player.sendSystemMessage(Component.literal("Current Thirst " + thirst.getThirst()).withStyle(ChatFormatting.GREEN));
+                    ModMessages.setToPlayer(new ThirstDataSyncC2SPacket(thirst.getThirst()), player);
                 });
             }
         });
@@ -57,5 +61,6 @@ public class DrinkWaterC2SPacket {
 
     private boolean hasWaterAroundThem(ServerPlayer player, ServerLevel level, int size) {
         return level.getBlockStates(player.getBoundingBox().inflate(2)).filter(state -> state.is(Blocks.WATER)).toArray().length > 0;
+
     }
 }

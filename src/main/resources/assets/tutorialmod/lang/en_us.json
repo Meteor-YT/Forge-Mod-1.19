@@ -17,11 +17,5 @@
 
   "itemGroup.customtab": "Custom Tab",
 
-  "entity.minecraft.villager.tutorialmod.jump_master": "Jump Master",
-
-  "key.category.tutorialmod.tutorial": "Tutorial Category",
-  "key.tutorialmod.drink_water": "Drink Key",
-
-  "message.tutorialmod.drink_water": "Drink Water",
-  "message.tutorialmod.no_water": "No Water Nearby"
+  "entity.minecraft.villager.tutorialmod.jump_master": "Jump Master"
 }

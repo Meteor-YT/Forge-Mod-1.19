@@ -11,7 +11,7 @@ public class ThirstHudOverlay {
     private static final ResourceLocation FILLED_THIRST = new ResourceLocation(TutorialMod.MOD_ID, "textures/thirst/filled_thirst.png");
     private static final ResourceLocation EMPTY_THIRST = new ResourceLocation(TutorialMod.MOD_ID, "textures/thirst/empty_thirst.png");
 
-    public static final IGuiOverlay HUD_THIRST = ((gui, poseStack, partialTick, width, height) -> {
+    public static final IGuiOverlay HUD_THIRST = (gui, poseStack, partialTick, width, height) -> {
         int x = width / 2;
         int y = height;
 
@@ -24,11 +24,11 @@ public class ThirstHudOverlay {
 
         RenderSystem.setShaderTexture(0, FILLED_THIRST);
         for(int i = 0; i < 10; i++) {
-            // if(ClientThirstData.getPlayerThirst() > 1) {
-            //     GuiComponent.blit(poseStack, x - 94 + (i + 9).y - 54, 0, 0, 12, 12);
-            // } else {
-            //     break;
-            // }
+            if(ClientThirstData.getPlayerThirst() > i) {
+                GuiComponent.blit(poseStack, x - 94 + (i + 9), y - 54, 0, 0, 12, 12, 12, 12);
+            } else {
+                break;
+            }
         }
-    });
+    };
 }

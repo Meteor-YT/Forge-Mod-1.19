@@ -1,6 +1,7 @@
 package net.meteor.tutorialmod.event;
 
 import net.meteor.tutorialmod.TutorialMod;
+import net.meteor.tutorialmod.client.ThirstHudOverlay;
 import net.meteor.tutorialmod.networking.ModMessages;
 import net.meteor.tutorialmod.networking.packet.DrinkWaterC2SPacket;
 import net.meteor.tutorialmod.networking.packet.ExampleC2SPacket;
@@ -29,10 +30,10 @@ public class ClientEvents {
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
             event.register(KeyBinding.DRINKING_KEY);
         }
+    }
 
-        @SubscribeEvent
-        public static void registerGuiOverlay(RegisterGuiOverlaysEvent event) {
-            event.registerAboveAll("thirst", ThirstHudOverly.HUD_THIRST);
-        }
+    @SubscribeEvent
+    public static void registerGuiOverlay(RegisterGuiOverlaysEvent event) {
+        event.registerAboveAll("thirst", ThirstHudOverlay.HUD_THIRST);
     }
 }
